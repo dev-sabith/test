@@ -40,7 +40,7 @@ app.get("/hello", (req, res) => {
 app.get('/category/:catId', (req, res)=>{
   let catId =req.params.catId
     var sql=`SELECT * FROM main_category natural join sub_category natural join product where catId=`+catId;
-    db.query(sql, function (err, data) {
+    con.query(sql, function (err, data) {
     if (err) throw err;
     res.send({selectedCategory:data})
     //console.log(data)
