@@ -42,8 +42,9 @@ router.get('/category/:catId', (req, res)=>{
     var sql=`SELECT * FROM main_category natural join sub_category natural join product where catId=`+catId;
     db.query(sql, function (err, data) {
     if (err) throw err;
-    console.log(data)
-    res.render('product-list', { title: 'User List', userData: data});
+    res.send({selectedCategory:data})
+    //console.log(data)
+    //res.render('product-list', { title: 'User List', userData: data});
   });
 });
 
